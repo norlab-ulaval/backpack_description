@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<robot name="backpack" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:property name="M_PI" value="3.14159"/>
+
+  <!-- Links -->
+  <link name="base_link"/>
+  <link name="camera1_link"/>
+  <link name="camera2_link"/>
+  <link name="gps_link"/>
+  <link name="imu_link"/>
+  <link name="lidar_link"/>
+
+  <!-- Joints -->
+  <joint name="camera1_base_joint" type="fixed">
+    <origin xyz="-0.030688 0.090001 0.056917" rpy="-1.74533 0 -${M_PI/2}" />
+    <parent link="base_link" />
+    <child link="camera1_link" />
+  </joint>
+
+  <joint name="camera2_base_joint" type="fixed">
+    <origin xyz="-0.030688 -0.090001 0.056917" rpy="-1.74533 0 -${M_PI/2}" />
+    <parent link="base_link" />
+    <child link="camera2_link" />
+  </joint>
+
+  <joint name="gps_base_joint" type="fixed">
+    <origin xyz="-0.597942 0.004732 0.719853" rpy="0 0.0349066 0" />
+    <parent link="base_link" />
+    <child link="gps_link" />
+  </joint>
+
+  <joint name="imu_base_joint" type="fixed">
+    <origin xyz="0.012516 0.00245 0.032" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="imu_link" />
+  </joint>
+
+  <joint name="lidar_base_joint" type="fixed">
+    <origin xyz="0 0 0.145700" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="lidar_link" />
+  </joint>
+
+
+  <!-- Cameras -->
+  <!-- <xacro:include filename="$(find marmotte_description)/urdf/cameras.urdf.xacro"/> -->
+</robot>
