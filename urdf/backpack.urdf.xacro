@@ -42,7 +42,46 @@
     <child link="lidar_link" />
   </joint>
 
+  <!-- Displaying CAD -->
+  <material name="grey">
+    <color rgba="${145/255} ${145/255} ${145/255} 1.0"/>
+  </material>
+  <material name="white">
+    <color rgba="${255/255} ${255/255} ${255/255} 1.0"/>
+  </material>
+  <xacro:property name="backpack_scale_CAD" value="0.001"/>
+  <xacro:property name="silouhette_scale_CAD" value="0.01"/>
 
-  <!-- Cameras -->
-  <!-- <xacro:include filename="$(find marmotte_description)/urdf/cameras.urdf.xacro"/> -->
+  <link name="backpack_CAD">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://backpack_description/meshes/backpack.stl" scale="${backpack_scale_CAD} ${backpack_scale_CAD} ${backpack_scale_CAD}"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+  </link>
+
+  <link name="silouhette_CAD">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://backpack_description/meshes/StayPuftScan.stl" scale="${silouhette_scale_CAD} ${silouhette_scale_CAD} ${silouhette_scale_CAD}"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+  </link>
+
+  <joint name="backpack_CAD_base_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="backpack_CAD" />
+  </joint>
+
+  <joint name="silouhette_CAD_base_joint" type="fixed">
+    <origin xyz="0.7 0.95 -0.3" rpy="0 0 ${M_PI}" />
+    <parent link="base_link" />
+    <child link="silouhette_CAD" />
+  </joint>
+
 </robot>
