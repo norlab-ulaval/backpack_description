@@ -5,11 +5,12 @@
 
   <!-- Links -->
   <link name="base_link"/>
+  <link name="base_footprint" />
   <link name="camera1_link"/>
   <link name="camera2_link"/>
-  <link name="gps_link"/>
-  <link name="imu_link"/>
   <link name="lidar_link"/>
+  <link name="imu_link"/>
+  <link name="gps_link"/>
 
   <!-- Joints -->
   <joint name="camera1_base_joint" type="fixed">
@@ -50,7 +51,7 @@
     <color rgba="${255/255} ${255/255} ${255/255} 1.0"/>
   </material>
   <xacro:property name="backpack_scale_CAD" value="0.001"/>
-  <xacro:property name="silouhette_scale_CAD" value="0.01"/>
+  <xacro:property name="silhouette_scale_CAD" value="0.01"/>
 
   <link name="backpack_CAD">
     <visual>
@@ -62,11 +63,11 @@
     </visual>
   </link>
 
-  <link name="silouhette_CAD">
+  <link name="silhouette_CAD">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://backpack_description/meshes/StayPuftScan.stl" scale="${silouhette_scale_CAD} ${silouhette_scale_CAD} ${silouhette_scale_CAD}"/>
+        <mesh filename="package://backpack_description/meshes/StayPuftScan.stl" scale="${silhouette_scale_CAD} ${silhouette_scale_CAD} ${silhouette_scale_CAD}"/>
       </geometry>
       <material name="white"/>
     </visual>
@@ -78,10 +79,16 @@
     <child link="backpack_CAD" />
   </joint>
 
-  <joint name="silouhette_CAD_base_joint" type="fixed">
+  <joint name="silhouette_CAD_base_joint" type="fixed">
     <origin xyz="0.7 0.95 -0.3" rpy="0 0 ${M_PI}" />
     <parent link="base_link" />
-    <child link="silouhette_CAD" />
+    <child link="silhouette_CAD" />
+  </joint>
+
+  <joint name="footprint__base_joint" type="fixed">
+    <origin xyz="-0.298971 0 -0.3" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="base_footprint" />
   </joint>
 
 </robot>
