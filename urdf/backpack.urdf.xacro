@@ -5,6 +5,7 @@
 
   <!-- Links -->
   <link name="base_link"/>
+  <link name="sensor_rack"/>
   <link name="base_footprint" />
   <link name="camera1_link"/>
   <link name="camera2_link"/>
@@ -13,33 +14,39 @@
   <link name="gps_link"/>
 
   <!-- Joints -->
+  <joint name="sensor_rack_base_joint" type="fixed">
+    <origin xyz="0.33 0 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="sensor_rack" />
+  </joint>
+
   <joint name="camera1_base_joint" type="fixed">
     <origin xyz="-0.030688 0.090001 0.056917" rpy="-1.74533 0 -${M_PI/2}" />
-    <parent link="base_link" />
+    <parent link="sensor_rack" />
     <child link="camera1_link" />
   </joint>
 
   <joint name="camera2_base_joint" type="fixed">
     <origin xyz="-0.030688 -0.090001 0.056917" rpy="-1.74533 0 -${M_PI/2}" />
-    <parent link="base_link" />
+    <parent link="sensor_rack" />
     <child link="camera2_link" />
   </joint>
 
   <joint name="gps_base_joint" type="fixed">
     <origin xyz="-0.597942 0.004732 0.719853" rpy="0 0.0349066 0" />
-    <parent link="base_link" />
+    <parent link="sensor_rack" />
     <child link="gps_link" />
   </joint>
 
   <joint name="imu_base_joint" type="fixed">
     <origin xyz="0.012516 0.00245 0.032" rpy="0 0 0" />
-    <parent link="base_link" />
+    <parent link="sensor_rack" />
     <child link="imu_link" />
   </joint>
 
   <joint name="lidar_base_joint" type="fixed">
     <origin xyz="0 0 0.145700" rpy="0 0 0" />
-    <parent link="base_link" />
+    <parent link="sensor_rack" />
     <child link="lidar_link" />
   </joint>
 
@@ -75,19 +82,19 @@
 
   <joint name="backpack_CAD_base_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0" />
-    <parent link="base_link" />
+    <parent link="sensor_rack" />
     <child link="backpack_CAD" />
   </joint>
 
   <joint name="silhouette_CAD_base_joint" type="fixed">
     <origin xyz="0.7 0.95 -0.3" rpy="0 0 ${M_PI}" />
-    <parent link="base_link" />
+    <parent link="sensor_rack" />
     <child link="silhouette_CAD" />
   </joint>
 
-  <joint name="footprint__base_joint" type="fixed">
+  <joint name="footprint_base_joint" type="fixed">
     <origin xyz="-0.298971 0 -0.3" rpy="0 0 0" />
-    <parent link="base_link" />
+    <parent link="sensor_rack" />
     <child link="base_footprint" />
   </joint>
 
