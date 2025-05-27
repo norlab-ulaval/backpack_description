@@ -38,7 +38,11 @@
   </joint>
 
   <joint name="lidar_base_joint" type="fixed">
-    <origin xyz="0 0 0.145700" rpy="0 -0.018 0" />
+  <!-- There seem to be two configurations of pitch angles that work for most rosbags:
+        -0.011 and
+        -0.018.
+        0.00183159 for Journal paper 7am backpack rosbag -->
+    <origin xyz="0 0 0.145700" rpy="0 -0.003 0" />
     <parent link="base_link" />
     <child link="lidar_link" />
   </joint>
